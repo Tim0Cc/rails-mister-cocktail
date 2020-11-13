@@ -4,13 +4,7 @@
 <h2>Which ingredient do you want to add and how much?</h2>
 <%= simple_form_for [ @cocktail, @dose ] do |f| %>
   <%= f.input :description %>
-  <%= f.input :ingredient, collection: Cocktail::INGREDIENT %>
+  <%= f.association :ingredient, label_method: :name, value_method: :id, include_blank: false  %>
   <%= f.submit %>
 <% end %>
 
-<h3>List of ingredients:</h3>
-<ul>
-  <% @ingredients.each do |ingredient| %>
-    <li><%= ingredient.name %></li>
-  <% end %>
-</ul>
