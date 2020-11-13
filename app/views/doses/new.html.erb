@@ -1,10 +1,15 @@
-<h1>Doses#new</h1>
-<p>Find me in app/views/doses/new.html.erb</p>
+<div class="container py-5 px-5">
+  <h2>Which ingredient do you want to add and how much?</h2>
+  <div class="form-group">
+    <%= simple_form_for [ @cocktail, @dose ] do |f| %>
+      <div class="form-inputs">
+        <%= f.input :description %>
+        <%= f.association :ingredient, label_method: :name, value_method: :id, include_blank: false  %>
+      </div>
+      <%= f.submit class: "btn btn-success" %>
+    <% end %>
+  </div>
+</div>
 
-<h2>Which ingredient do you want to add and how much?</h2>
-<%= simple_form_for [ @cocktail, @dose ] do |f| %>
-  <%= f.input :description %>
-  <%= f.association :ingredient, label_method: :name, value_method: :id, include_blank: false  %>
-  <%= f.submit %>
-<% end %>
+
 
